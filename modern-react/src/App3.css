@@ -4,7 +4,7 @@
   justify-content: space-around;
   width: 100vw;
   height: 100vh;
-  background-color: rgb(139, 177, 242);
+  background-color: coral;
 }
 
 .inner-container {
@@ -17,7 +17,7 @@
   border: solid 1px;
   border-radius: 1rem;
   padding: 20px;
-  background-color: rgb(80, 111, 165);
+  background-color: darksalmon;
 }
 
 .User-container {

@@ -4,55 +4,50 @@ import UserList3 from "./UserList3";
 import "./App3.css";
 
 export default function App3() {
-  //input의 상태관리
-
+  //input의 상태관리 (useState훅 이용)
   const [inputs, setInputs] = useState({
     username: "",
-    group: "",
+    email: "",
   });
 
-  const { username, group } = inputs;
+  //구조분해할당
+  const { username, email } = inputs;
 
   const onChange = (e) => {
-    console.log(e);
     const { name, value } = e.target;
     setInputs({ ...inputs, [name]: value });
   };
 
-  // user 상태관리
+  const onCreate = (id) => {
+    const user = {
+      id,
+      username,
+      email,
+    };
+    setUsers([...users, user]);
+    setInputs({ username: "", email: "" });
+  };
+
   const [users, setUsers] = useState([
     {
       id: "1",
-      username: "제니",
-      group: "blackpink",
+      username: "열공",
+      email: "100@hi.com",
       active: true,
     },
     {
       id: "2",
-      username: "정국",
-      group: "bts",
+      username: "홧팅",
+      email: "ft@hi.com",
       active: true,
     },
     {
       id: "3",
       username: "펭수",
-      group: "EBS",
+      email: "GP@hi.com",
       active: false,
     },
   ]);
-
-  // uuid사용시, id값을 입력해줘야하는것 기억할것!!
-  const onCreate = (id) => {
-    const user = {
-      id,
-      username,
-      group,
-    };
-
-    setUsers([...users, user]);
-
-    setInputs({ username: "", group: "" });
-  };
 
   const onRemove = (id) => {
     setUsers(users.filter((item) => item.id !== id));
@@ -69,14 +64,12 @@ export default function App3() {
   return (
     <div className="container">
       <div className="inner-container">
-        <div>
-          <CreateUser3
-            username={username}
-            group={group}
-            onChange={onChange}
-            onCreate={onCreate}
-          />
-        </div>
+        <CreateUser3
+          username={username}
+          email={email}
+          onChange={onChange}
+          onCreate={onCreate}
+        />
         <UserList3 users={users} onRemove={onRemove} onToggle={onToggle} />
       </div>
     </div>

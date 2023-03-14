@@ -12,7 +12,6 @@ export default function AddTodo({ onAdd }) {
     onAdd({ id: uuidv4(), text, status: "active" });
     setText("");
   };
-
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -21,7 +20,7 @@ export default function AddTodo({ onAdd }) {
         value={text}
         onChange={handleChange}
       />
-      <button>Add</button>
+      <button>등록</button>
     </form>
   );
 }
